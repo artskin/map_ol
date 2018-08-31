@@ -25,8 +25,6 @@ import GeoJSON from 'ol/format/GeoJSON.js';
 // coordinates directly to map coordinates, so we create a projection that uses
 // the image extent in pixels.
 
-//读取图形数据
-
 var extent = [0, 0, 1400, 1288];
 var projection = new Projection({
   code: 'xkcd-image',
@@ -57,12 +55,6 @@ var vector = new VectorLayer({
     })
   })
 });
-// console.log(store.get("Point"))
-// var pointFeature = new Feature(new Point(store.get("Point")));
-// var polygonFeature = new Feature(new Polygon(store.get("Polygon")));
-
-var localVector = ""
-var pointFeature = new Feature(new Point([500, 550]));
 
 var map = new Map({
   target: 'map',
@@ -77,11 +69,8 @@ var map = new Map({
       })
     }),
     new VectorLayer({
-      // source: new VectorSource({
-      //   features: [pointFeature]
-      // }),
       source:new VectorSource({
-        url:"data/geoJson.json",
+        url:"data/geoJson.json",//读取图形数据
         format: new GeoJSON(),
         wrapX: false
       }),
@@ -91,8 +80,8 @@ var map = new Map({
           anchorXUnits: 'fraction',
           anchorYUnits: 'pixels',
           opacity: 0.75,
-          scale:0.3,
-          src: './img/camera@2x.png',
+          scale:0.2,
+          src: './img/camera@2x.svg',
         })),
         stroke: new Stroke({
           width: 1,
@@ -104,9 +93,7 @@ var map = new Map({
       })
     }),
     vector
-
   ],
-  
   view: new View({
     projection: projection,
     center: getCenter(extent),
