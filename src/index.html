@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <style>
+    @font-face {
+      font-family: 'iconfont';  /* project id 815260 */
+      src: url('//at.alicdn.com/t/font_815260_tck2i7h7y0i.eot');
+      src: url('//at.alicdn.com/t/font_815260_tck2i7h7y0i.eot?#iefix') format('embedded-opentype'),
+      url('//at.alicdn.com/t/font_815260_tck2i7h7y0i.woff') format('woff'),
+      url('//at.alicdn.com/t/font_815260_tck2i7h7y0i.ttf') format('truetype'),
+      url('//at.alicdn.com/t/font_815260_tck2i7h7y0i.svg#iconfont') format('svg');
+    }
+    .iconfont{
+      font-family:"iconfont" !important;
+      font-size:24px;font-style:normal;
+      -webkit-font-smoothing: antialiased;
+      -webkit-text-stroke-width: 0.2px;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    .map {
+      width: 600px;
+      height: 360px;
+      border: 1px dashed #ccc;
+      position: relative;
+    }
+    .map canvas{background: #eee;}
+    #toolbar{position: absolute;left: 0;top: 0;width: 100%;height: 36px;background: rgba(0,60,136,0.5);z-index: 99;text-align: right;color: #fff;}
+    #toolbar i{font-style: normal;display: inline-block;padding:4px 5px;cursor: pointer;border:1px dashed rgba(255, 204, 0, 0);border-radius: 3px;}
+    #toolbar i:hover{border: 1px dashed #fc0;}
+    #toolbar i.selected{border: 1px dashed rgba(255, 204, 0, 1);color: rgb(255, 204, 0)}
+  </style>
+  <title><!-- parcel-plugin-change-file-0 --></title>
+<!-- <script src="https://cdn.bootcss.com/openlayers/4.6.5/ol.js"></script>
+<script>
+
+      //定义全局变量
+      var map, layer, selectControl, selectedFeature;
+      //关闭弹出窗口的函数
+      function onPopupClose(evt) {
+          selectControl.unselect(selectedFeature);
+      }
+      //构造弹出窗口的函数
+      function onFeatureSelect(feature) {
+          selectedFeature = feature;
+          popup = new Popup.Anchored("chicken",
+                                    feature.geometry.getBounds().getCenterLonLat(),
+                                    new Size(250,75),
+                                    "<div style='font-size:.8em'>" + feature.attributes['cq:LNAME'] +"</div>",
+                                    null, true, onPopupClose);
+          feature.popup = popup;
+          map.addPopup(popup);
+      }
+      //销毁弹出窗口的函数
+      function onFeatureUnselect(feature) {
+          map.removePopup(feature.popup);
+          feature.popup.destroy();
+          feature.popup = null;
+      }
+      //地图和页面加载函数
+      window.onload = function(){
+        console.log(ol)
+        map = new ol.Map({
+          target: 'map',
+          maxScale: 500, minScale: 500000, numZoomLevels: 5,
+          layers: [
+            new ol.layer.WMS( "District","http://192.98.151.17:8081/geoserver/wms", {layers: 'cq:GMAP_DISTRICT'} ),
+            new ol.Layer.WMS( "Water","http://192.98.151.17:8081/geoserver/wms", {layers: 'cq:GMAP_LAKE', 'transparent': true, format: 'image/png' } ),
+            new ol.Layer.WFS( "Unit",
+                  "http://192.98.151.17:8081/geoserver/wfs", {typename: 'cq:GPOI_GOV'},
+              { 
+                    typename: 'unit',
+                    featureNS: 'http://www.openplans.org/cq',
+                    extractAttributes: true,
+                    maxfeatures: 10,
+                    textAttrToDisplay: 'lname'
+              } )
+          ],
+          view: new ol.View({
+            center: ol.proj.fromLonLat([37.41, 8.82]),
+            zoom: 4
+          })
+        });
+          //设置地图缩放范围和缩放等级，0级比例尺最小
+          
+          //加载行政区图层，WMS栅格图像
+          
+          //加载水系图层，WMS栅格图像
+          
+          //加载单位图层，WFS矢量数据，由openlayers在客户端绘制，注意：数量太多会导致速度缓慢
+          
+          //在地图上添加按钮和工具条
+          zb = new Control.ZoomBox();
+          var panel = new Control.Panel({defaultControl: zb});
+          selectControl = new Control.SelectFeature(layer, {onSelect: onFeatureSelect, onUnselect: onFeatureUnselect, hover: true});
+          panel.addControls([
+              new Control.MouseDefaults(), zb, selectControl
+          ]);
+          map.addControl(panel);
+        
+          map.addControl(new Control.PanZoomBar({zoomWorldIcon:false}));
+          map.addControl(new Control.LayerSwitcher({'ascending':false}));
+          map.addControl(new Control.MousePosition());
+          //设置初始地图的中心坐标和缩放等级
+          map.setCenter(new LonLat(106.5, 29.5), 3);
+      }
+      </script> -->
+</head>
+<body>
+  <h2>商场平面图</h2>
+  
+  <div id="map" class="map">
+    <div id="toolbar">
+      <div id="type">
+        <i class="iconfont" id="Polygon">&#xe605;</i>
+        <i class="iconfont" id="Point">&#xe606;</i>
+        <i class="iconfont" id="Circle">&#xe774;</i>
+        <i class="iconfont" id="edit">&#xe8cf;</i>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://unpkg.com/storejs/dist/store.min.js"></script>
+  <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
+  <script src="./js/index.js"></script>
+  
+</body>
+</html>

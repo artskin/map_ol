@@ -1,0 +1,28 @@
+{
+  "name": "ol_map",
+  "version": "1.0.0",
+  "description": "openlayers 自定义地图",
+  "main": "src/index.js",
+  "dependencies": {
+    "ol": "^5.2.0",
+    "parcel-plugin-change-file": "^1.2.7"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.9.7"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel src/index.html",
+    "build": "parcel build --public-url . index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:artskin/map_ol.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/artskin/map_ol/issues"
+  },
+  "homepage": "https://github.com/artskin/map_ol/blob/master/README.md"
+}
