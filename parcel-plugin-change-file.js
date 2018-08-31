@@ -2,6 +2,6 @@ const package = require('./package.json')
 
 
 module.exports = {
-  html: [package.name],
+  html: [package.description],
   copy: ['src/assets'],
 };

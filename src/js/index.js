@@ -79,7 +79,9 @@ var map = new Map({
           anchor: [0.5, 100],
           anchorXUnits: 'fraction',
           anchorYUnits: 'pixels',
-          opacity: 0.75,
+          opacity: 1,
+          rotation:-90,
+          rotateWithView:true,
           scale:0.2,
           src: './img/camera@2x.svg',
         })),
@@ -125,10 +127,11 @@ map.addInteraction(modify);
 
 var draw, snap; // global so we can remove them later
 
-$("#type i").click(function(){
+$("#type li").click(function(){
   removeAction()
   $(this).addClass("selected");
-  var typeVal = $(this).attr("id");
+  var typeVal = $(this).children("i").attr("id");
+  console.log(typeVal)
   addInteractions(typeVal)
 })
 
@@ -136,7 +139,7 @@ function addInteractions(typeVal) {
   draw = new Draw({
     source: source,
     type: typeVal,
-    geometryName:"group1"
+    //geometryName:"group1"
   });
   map.addInteraction(draw);
 
@@ -153,7 +156,7 @@ function addInteractions(typeVal) {
 function removeAction(){
   map.removeInteraction(draw);
   map.removeInteraction(snap);
-  $("#type i").removeClass("selected");
+  $("#type li").removeClass("selected");
 }
 
 function saveDraw(Dtype,Arr) {
