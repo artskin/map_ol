@@ -25,6 +25,8 @@ import GeoJSON from 'ol/format/GeoJSON.js';
 // coordinates directly to map coordinates, so we create a projection that uses
 // the image extent in pixels.
 
+var data={}
+
 var extent = [0, 0, 1400, 1288];
 var projection = new Projection({
   code: 'xkcd-image',
@@ -112,14 +114,12 @@ var selectClick = new Select();
 
 map.addInteraction(selectClick);
 
-var groupList= [
-  {id:1,cameras:[1,2]},
-  {id:2,cameras:[4,7,9]}
-]
 
 selectClick.on('select', function(e) {
-  console.log(e.selected[0])
+  var groupID = e.selected[0].values_.groupID;
   
+  
+  console.log(groupID)
 });
 
 var modify = new Modify({source: source});
